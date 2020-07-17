@@ -11,13 +11,13 @@ namespace OnlineSurveyProject
     {
         protected int NumberOfChoices
         {
-            get { return Convert.ToInt32(Session[PlaceHolder1.ClientID]); }
-            set { Session[PlaceHolder1.ClientID] = value.ToString(); }
+            get { return Convert.ToInt32(Session[Panel1.ClientID]); }
+            set { Session[Panel1.ClientID] = value.ToString(); }
         }
         protected string RecentChoice
         {
-            get { return Session[PlaceHolder1.ClientID+"choice"].ToString(); }
-            set { Session[PlaceHolder1.ClientID+"choice"] = value; }
+            get { return Session[Panel1.ClientID+"choice"].ToString(); }
+            set { Session[Panel1.ClientID+"choice"] = value; }
         }
         public string QuestionText
         {
@@ -30,14 +30,18 @@ namespace OnlineSurveyProject
                 return TextBox1.Text.ToString();
             }
         }
+        public string [] GetChoices()
+        {
+            return Panel1.Controls.OfType<TextBox>().Select(x => x.Text).ToArray(); 
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
 
-                this.NumberOfChoices = 1;
-                this.RecentChoice = "";
-                this.createChoice();
+                this.NumberOfChoices = 0;
+
+    
             }
                 //Initiate the counter of dynamically added controls
 
@@ -54,8 +58,10 @@ namespace OnlineSurveyProject
             //if(NumberOfChoices!=0)
             //    RecentChoice=recentTextBox[NumberOfChoices-1].Text;
             NumberOfChoices++;
-            PlaceHolder1.Controls.Add(c);
+            Panel1.Controls.Add(c);
+            
         }
+
         private void createChoice()
         {
             int count = this.NumberOfChoices;
@@ -69,7 +75,8 @@ namespace OnlineSurveyProject
                 //    c.Text = RecentChoice;
                 //}
                 //Add the Controls to the container of your choice
-                PlaceHolder1.Controls.Add(c);
+                Panel1.Controls.Add(c);
+                
             }
         }
     }

@@ -13,14 +13,10 @@
                     <asp:Button ID="btnCreate" runat="server" Text="Create" OnClick="btnCreate_Click"/>
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <ul ID ="questionList" runat="server">
-
-            </ul>
         </div>
     </div>
-    <script>
-        
-    </script>
+    <asp:Button ID="submitQuestionnaire" runat="server" Text="Create" OnClick="submitQuestionnaire_Click"/>
+    
 </asp:Content>
 
 

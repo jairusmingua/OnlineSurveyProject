@@ -49,12 +49,12 @@ namespace OnlineSurveyProject {
         protected global::System.Web.UI.WebControls.Button btnCreate;
         
         /// <summary>
-        /// questionList control.
+        /// submitQuestionnaire control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl questionList;
+        protected global::System.Web.UI.WebControls.Button submitQuestionnaire;
     }
 }

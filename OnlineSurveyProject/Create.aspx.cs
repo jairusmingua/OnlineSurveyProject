@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace OnlineSurveyProject
 {
@@ -44,7 +45,7 @@ namespace OnlineSurveyProject
         protected void Page_PreInit(object sender, EventArgs a)
         {
             try {
-                List<string> keys = Request.Form.AllKeys.Where(key => key.Contains("questionBox")).ToList();
+                var x = PlaceHolder1.Controls;    
             } catch(Exception e)
             {
 
@@ -76,6 +77,31 @@ namespace OnlineSurveyProject
                 PlaceHolder1.Controls.Add(c);
             }
         }
-        
+
+        protected void submitQuestionnaire_Click(object sender, EventArgs e)
+        {
+            List<QuestionBox> questions = PlaceHolder1.Controls.OfType<QuestionBox>().ToList();
+
+            XElement survey = new XElement("Survey");
+
+            questions.RemoveAt(questions.Count - 1);
+            foreach (QuestionBox question in questions)
+            {
+                var q = question.QuestionText;
+                var c = question.GetChoices();
+                XElement ch = new XElement("Choices");
+                foreach(string c_ in c)
+                {
+                    ch.Add(new XElement("Choice",c_));
+                }
+                XElement qs = new XElement("Question",
+                    new XElement("QuestionText", q),
+                    ch);
+                survey.Add(qs);
+
+
+            }
+            
+        }
     }
 }
