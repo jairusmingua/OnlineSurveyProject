@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Create" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Create.aspx.cs" Inherits="OnlineSurveyProject.Create" %>
+﻿<%@ Page Title="Create" Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="Create.aspx.cs" Inherits="OnlineSurveyProject.Create" %>
 
 <%@ Register Src="~/QuestionBox.ascx" TagName="QuestionBox" TagPrefix="OnlineSurvey" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">

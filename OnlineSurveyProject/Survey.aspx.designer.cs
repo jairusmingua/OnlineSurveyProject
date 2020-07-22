@@ -10,45 +10,42 @@
 namespace OnlineSurveyProject {
     
     
-    public partial class Dashboard {
+    public partial class Survey {
         
         /// <summary>
-        /// surveyList control.
+        /// surveyPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl surveyList;
+        protected global::System.Web.UI.WebControls.PlaceHolder surveyPanel;
         
         /// <summary>
-        /// createSurveyBtn control.
+        /// surveyBoard control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button createSurveyBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl surveyBoard;
         
         /// <summary>
-        /// sharePanel control.
+        /// surveyName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel sharePanel;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl surveyName;
         
         /// <summary>
-        /// Master property.
+        /// errorPanel control.
         /// </summary>
         /// <remarks>
-        /// Auto-generated property.
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        public new OnlineSurveyProject.Dashboard1 Master {
-            get {
-                return ((OnlineSurveyProject.Dashboard1)(base.Master));
-            }
-        }
+        protected global::System.Web.UI.WebControls.PlaceHolder errorPanel;
     }
 }

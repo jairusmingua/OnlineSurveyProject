@@ -54,9 +54,7 @@ namespace OnlineSurveyProject
         {
             TextBox c = new TextBox();
             c.ID = "questionChoice" + NumberOfChoices;
-            //List<TextBox> recentTextBox = PlaceHolder1.Controls.OfType<TextBox>().ToList();
-            //if(NumberOfChoices!=0)
-            //    RecentChoice=recentTextBox[NumberOfChoices-1].Text;
+  
             NumberOfChoices++;
             Panel1.Controls.Add(c);
             
@@ -70,11 +68,7 @@ namespace OnlineSurveyProject
             {
                 TextBox c = new TextBox();
                 c.ID = "txtData" + i.ToString();
-                //if (i == count - 1)
-                //{
-                //    c.Text = RecentChoice;
-                //}
-                //Add the Controls to the container of your choice
+        
                 Panel1.Controls.Add(c);
                 
             }

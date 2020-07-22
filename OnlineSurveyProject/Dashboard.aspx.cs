@@ -13,6 +13,7 @@ namespace OnlineSurveyProject
 {
     public partial class Dashboard : System.Web.UI.Page
     {
+      
         protected void Page_Load(object sender, EventArgs e)
         {
             string userid = string.Empty;
@@ -22,6 +23,10 @@ namespace OnlineSurveyProject
             {
                 userid = reqCookies["UserID"].ToString();
           
+            }
+            else
+            {
+                Response.Redirect("/Default.aspx");
             }
 
             try
@@ -36,7 +41,7 @@ namespace OnlineSurveyProject
                 {
                     reply.Read();
                     string name ="Hello "+ reply["FirstName"].ToString() +" "+reply["LastName"].ToString()+"!";
-                    userTxt.InnerText = name;
+                    this.Master.setDashboardIdentity(name);
                 }
                 connection.Close();
                 

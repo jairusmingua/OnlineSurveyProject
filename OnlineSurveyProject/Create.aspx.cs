@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -24,6 +27,10 @@ namespace OnlineSurveyProject
         protected void Page_Init(object sender, EventArgs e)
         {
 
+           
+        }
+        protected void Page_Load(object sender, EventArgs e)
+        {
             if (!Page.IsPostBack)
             {
                 //Initiate the counter of dynamically added controls
@@ -37,10 +44,6 @@ namespace OnlineSurveyProject
                 var x = PlaceHolder1.Controls;
                 this.createControls();
             }
-        }
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            
         }
         protected void Page_PreInit(object sender, EventArgs a)
         {
@@ -57,8 +60,6 @@ namespace OnlineSurveyProject
             Control c = Page.LoadControl("~/QuestionBox.ascx");
             c.ID = "questionBox" + NumberOfControls;
             NumberOfControls++;
-            if (NumberOfControls > 0)
-                ((QuestionBox)c).QuestionText = RecentQuestion;
             PlaceHolder1.Controls.Add(c);
         }
         private void createControls()
@@ -69,10 +70,6 @@ namespace OnlineSurveyProject
             {
                 Control c = Page.LoadControl("~/QuestionBox.ascx");
                 c.ID = "txtData" + i.ToString();
-                if (i == count - 1)
-                {
-                    ((QuestionBox)c).QuestionText = RecentQuestion;
-                }
                 //Add the Controls to the container of your choice
                 PlaceHolder1.Controls.Add(c);
             }
@@ -84,24 +81,71 @@ namespace OnlineSurveyProject
 
             XElement survey = new XElement("Survey");
 
-            questions.RemoveAt(questions.Count - 1);
             foreach (QuestionBox question in questions)
             {
                 var q = question.QuestionText;
                 var c = question.GetChoices();
-                XElement ch = new XElement("Choices");
+                XElement qs = new XElement("Question");
+                qs.SetAttributeValue("ChoiceCount", c.Count().ToString());
+                qs.SetAttributeValue("QuestionText", q);
+                qs.SetAttributeValue("QuestionID", Guid.NewGuid());
                 foreach(string c_ in c)
                 {
-                    ch.Add(new XElement("Choice",c_));
+                    XElement x = new XElement("Choice");
+                    x.SetAttributeValue("ChoiceText", c_);
+                    x.SetAttributeValue("ChoiceID", Guid.NewGuid());
+                    qs.Add(x);
                 }
-                XElement qs = new XElement("Question",
-                    new XElement("QuestionText", q),
-                    ch);
                 survey.Add(qs);
 
 
             }
+            try
+            {
+                string userid = string.Empty;
+
+                HttpCookie reqCookies = Request.Cookies["userInfo"];
+                if (reqCookies != null)
+                {
+                    userid = reqCookies["UserID"].ToString();
+                    submitSurvey(userid,surveyNameTxt.Value,survey,questions.Count);
+                }
+                else
+                {
+                    Response.Redirect("/Logout.aspx");
+                }
+
+            }
+            catch (Exception x)
+            {
+
+                throw;
+            }
+        }
+        private void submitSurvey(string userid,string surveyName,XElement surveyXml,int numberOfQuestions)
+        {
             
+            try
+            {
+               
+                String connectionString = ConfigurationManager.ConnectionStrings["OnlineSurvey"]?.ConnectionString;
+                SqlConnection connection = new SqlConnection(connectionString);
+                SqlCommand command = new SqlCommand("CreateSurveyXML", connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.Add("UserId", SqlDbType.UniqueIdentifier).Value = Guid.Parse(userid);
+                command.Parameters.Add("SurveyName", SqlDbType.VarChar).Value = surveyName;
+                command.Parameters.Add("NumberOfQuestions", SqlDbType.Int).Value = numberOfQuestions.ToString();
+                command.Parameters.Add("SurveyXML", SqlDbType.Xml).Value = surveyXml.ToString();
+
+                connection.Open();
+                var reply = command.ExecuteReader();
+                connection.Close();
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
         }
     }
 }

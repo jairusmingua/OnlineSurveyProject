@@ -10,45 +10,51 @@
 namespace OnlineSurveyProject {
     
     
-    public partial class Dashboard {
+    public partial class SurveyItem {
         
         /// <summary>
-        /// surveyList control.
+        /// surveyItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl surveyList;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl surveyItem;
         
         /// <summary>
-        /// createSurveyBtn control.
+        /// surveyName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button createSurveyBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl surveyName;
         
         /// <summary>
-        /// sharePanel control.
+        /// surveyDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel sharePanel;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl surveyDate;
         
         /// <summary>
-        /// Master property.
+        /// numberOfQuestions control.
         /// </summary>
         /// <remarks>
-        /// Auto-generated property.
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        public new OnlineSurveyProject.Dashboard1 Master {
-            get {
-                return ((OnlineSurveyProject.Dashboard1)(base.Master));
-            }
-        }
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl numberOfQuestions;
+        
+        /// <summary>
+        /// shareBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button shareBtn;
     }
 }

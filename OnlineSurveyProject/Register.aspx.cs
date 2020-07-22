@@ -22,12 +22,14 @@ namespace OnlineSurveyProject
             {
                 String connectionString =  ConfigurationManager.ConnectionStrings["OnlineSurvey"]?.ConnectionString;
                 SqlConnection connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand("INSERT INTO dbo.Users (FirstName,LastName,UserName,Email,Password) VALUES(@FirstName,@LastName,@UserName,@Email,@Password)",connection);
+                SqlCommand command = new SqlCommand("INSERT INTO dbo.Users (FirstName,LastName,UserName,Email,Password,UserID) VALUES(@FirstName,@LastName,@UserName,@Email,@Password,@UserID)",connection);
                 command.Parameters.AddWithValue("FirstName", firstNameTxt.Value.ToString());
                 command.Parameters.AddWithValue("LastName", lastNameTxt.Value.ToString());
                 command.Parameters.AddWithValue("UserName", usernameTxt.Text.ToString());
                 command.Parameters.AddWithValue("Email", emailTxt.Value.ToString());
                 command.Parameters.AddWithValue("Password", passwordTxt.Value.ToString());
+                command.Parameters.AddWithValue("UserID", Guid.NewGuid());
+
                 connection.Open();
                 var reply = command.ExecuteNonQuery();
                 connection.Close();
