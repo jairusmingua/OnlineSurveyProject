@@ -80,24 +80,29 @@ namespace OnlineSurveyProject
             List<QuestionBox> questions = PlaceHolder1.Controls.OfType<QuestionBox>().ToList();
 
             XElement survey = new XElement("Survey");
-
+            int rank = 1;
+            
             foreach (QuestionBox question in questions)
             {
                 var q = question.QuestionText;
                 var c = question.GetChoices();
                 XElement qs = new XElement("Question");
                 qs.SetAttributeValue("ChoiceCount", c.Count().ToString());
+                qs.SetAttributeValue("QuestionRank", rank.ToString());
                 qs.SetAttributeValue("QuestionText", q);
                 qs.SetAttributeValue("QuestionID", Guid.NewGuid());
+                int choiceRank = 1;
                 foreach(string c_ in c)
                 {
                     XElement x = new XElement("Choice");
                     x.SetAttributeValue("ChoiceText", c_);
+                    x.SetAttributeValue("ChoiceRank", choiceRank.ToString());
                     x.SetAttributeValue("ChoiceID", Guid.NewGuid());
                     qs.Add(x);
+                    choiceRank++;
                 }
                 survey.Add(qs);
-
+                rank++;
 
             }
             try
