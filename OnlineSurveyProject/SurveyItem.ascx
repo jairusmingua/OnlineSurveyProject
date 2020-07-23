@@ -8,7 +8,8 @@
             <div runat="server" id="numberOfQuestions">5</div>
         </div>
         <div id="surveyButtons">
-            <asp:Button ID="shareBtn" runat="server" Text="Share" />
+            <asp:Button ID="shareBtn" runat="server" Text="Share"  OnClick="shareBtn_Click"/>
         </div>
     </div>
+
 </div>

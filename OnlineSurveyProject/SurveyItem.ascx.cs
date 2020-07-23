@@ -11,9 +11,11 @@ namespace OnlineSurveyProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+             
+            
         }
-        public string surveyID
+
+        public string SurveyID
         {
             set
             {
@@ -41,6 +43,14 @@ namespace OnlineSurveyProject
             set
             {
                 numberOfQuestions.InnerText = value.ToString();
+            }
+        }
+
+        protected void shareBtn_Click(object sender, EventArgs e)
+        {
+            if(Page is Dashboard)
+            {
+                ((Dashboard)Page).showShareLink(surveyItem.Attributes["sid"],surveyName.InnerText.ToString());
             }
         }
     }

@@ -12,28 +12,95 @@ namespace OnlineSurveyProject
 {
     public partial class Survey : System.Web.UI.Page
     {
-        protected int SurveyID(string name)
+        private string SurveyState
         {
-            get { return Convert.ToInt32(Session[]); }
-            set { Session[] = value.ToString(); }
+            set
+            {
+                Session["SurveyState"] = value.ToString();
+            }
+            get
+            {
+                return Session["SurveyState"].ToString();
+            }
+            
+        }
+        private string RespondentName
+        {
+            set
+            {
+                Session["RespondentName"] = value.ToString();
+            }
+            get
+            {
+                return Session["RespondentName"].ToString();
+            }
+        }
+        private string RespondentAge
+        {
+            set
+            {
+                Session["RespondentAge"] = value.ToString();
+            }
+            get
+            {
+                return Session["RespondentAge"].ToString();
+            }
+        }
+        private string RespondentGender
+        {
+            set
+            {
+                Session["RespondentGender"] = value.ToString();
+            }
+            get
+            {
+                return Session["RespondentGender"].ToString();
+            }
+        }
+        protected void Page_Init(object sender, EventArgs e)
+        {
+           
+
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            errorPanel.Visible = false;
-            surveyPanel.Visible = false;
             var surveyId = Request.QueryString;
-            if (surveyId != null && surveyId.Count > 0)
+           
+            if (!Page.IsPostBack)
             {
-                string id = surveyId.Get("id");
-                if (id != null)
+                errorPanel.Visible = false;
+                surveyPanel.Visible = false;
+                filloutPanel.Visible = false;
+                List<String> gender = new List<String>();
+                gender.Add("Male");
+                gender.Add("Female");
+                genderList.DataSource = gender;
+                genderList.DataBind();
+                SurveyState = "surveyPanel";
+                if (surveyId != null && surveyId.Count > 0)
                 {
-                    validateSurvey(id);
+                    string id = surveyId.Get("id");
+                    if (id != null)
+                    {
+                        validateSurvey(id);
+                    }
+                }
+                else
+                {
+                    errorSurvey();
                 }
             }
             else
             {
-                errorSurvey();
+                if (SurveyState == "filloutpanel")
+                {
+                    filloutPanel.Visible = true;
+                    surveyPanel.Visible = false;
+                    errorPanel.Visible = false;
+                    answerPanel.Visible = false;
+                }
             }
+            
         }
         private void errorSurvey()
         {
@@ -68,6 +135,31 @@ namespace OnlineSurveyProject
             surveyName.InnerText = id["SurveyName"].ToString();
             errorPanel.Visible = false;
             surveyPanel.Visible = true;
+            takeSurveyBtn.Enabled = false;
+        }
+
+        protected void agreeCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (agreeCheckBox.Checked == true)
+            {
+                takeSurveyBtn.Enabled = true;
+            }
+            else
+            {
+                takeSurveyBtn.Enabled = false;
+            }
+        }
+
+        protected void takeSurveyBtn_Click(object sender, EventArgs e)
+        {
+            SurveyState = "filloutPanel";
+            filloutPanel.Visible = true;
+            surveyPanel.Visible = false;
+            errorPanel.Visible = false;
+            answerPanel.Visible = false;
+            RespondentName = nameTxt.Text.ToString();
+            RespondentAge = ageTxt.Text.ToString();
+            RespondentGender = genderList.SelectedValue;
         }
     }
 }

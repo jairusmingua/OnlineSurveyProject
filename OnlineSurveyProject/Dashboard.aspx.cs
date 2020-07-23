@@ -17,7 +17,7 @@ namespace OnlineSurveyProject
         protected void Page_Load(object sender, EventArgs e)
         {
             string userid = string.Empty;
-
+            sharePanel.Visible = false;
             HttpCookie reqCookies = Request.Cookies["userInfo"];
             if (reqCookies != null)
             {
@@ -71,19 +71,29 @@ namespace OnlineSurveyProject
 
             }
         }
+        public void showShareLink(string id,string name)
+        {
+            string url = "https://localhost:44375/";
+            modalTitle.InnerText = "Share "+name;
+            modalDescription.InnerText = "Copy and share this link";
+            shareLink.Text = url + "Survey?id=" + id;
+            sharePanel.Visible = true;
+
+        }
         private void convertSurveyList(SqlDataReader response)
         {
             StringBuilder surveyHtml = new StringBuilder();
             surveyHtml.Append("<ul>");
             while (response.Read())
             {
-                surveyHtml.AppendFormat("<li><div>{0}</div>" +
-                    "<div>{1}</div>" +
-                    "<div>{2}</div></li>", 
-                    response["SurveyName"].ToString(), 
-                    response["DateCreated"].ToString(), 
-                    response["NumberOfQuestions"].ToString());
+           
+                Control c = Page.LoadControl("~/SurveyItem.ascx");
+                ((SurveyItem)(c)).SurveyName = response["SurveyName"].ToString();
+                ((SurveyItem)(c)).SurveyDate = response["DateCreated"].ToString();
+                ((SurveyItem)(c)).NumberOfQuestions = response["NumberOfQuestions"].ToString();
+                ((SurveyItem)(c)).SurveyID = response["SurveyId"].ToString();
 
+                surveyPanel.Controls.Add(c);
             }
             surveyHtml.Append("</ul>");
             surveyList.InnerHtml = surveyHtml.ToString();
@@ -96,6 +106,11 @@ namespace OnlineSurveyProject
         protected void createSurveyBtn_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Create.aspx");
+        }
+
+        protected void closeBtn_Click(object sender, EventArgs e)
+        {
+            sharePanel.Visible = false;
         }
     }
 }
