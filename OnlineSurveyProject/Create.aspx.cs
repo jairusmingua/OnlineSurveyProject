@@ -145,6 +145,7 @@ namespace OnlineSurveyProject
                 connection.Open();
                 var reply = command.ExecuteReader();
                 connection.Close();
+                Response.Redirect("/Dashboard.aspx");
             }
             catch (Exception e)
             {
