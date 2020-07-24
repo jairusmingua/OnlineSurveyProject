@@ -73,10 +73,10 @@ namespace OnlineSurveyProject
         }
         public void showShareLink(string id,string name)
         {
-            string url = "https://localhost:44375/";
+            string url = HttpContext.Current.Request.Url.Host;
             modalTitle.InnerText = "Share "+name;
             modalDescription.InnerText = "Copy and share this link";
-            shareLink.Text = url + "Survey?id=" + id;
+            shareLink.Text = url + "/Survey?id=" + id;
             sharePanel.Visible = true;
 
         }
