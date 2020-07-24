@@ -24,6 +24,43 @@ namespace OnlineSurveyProject
             }
             
         }
+        private int QuestionNumber
+        {
+            set
+            {
+                Session["QuestionNumber"] = value.ToString();
+            }
+            get
+            {
+                return Convert.ToInt32(Session["QuestionNumber"]);
+            }
+
+        }
+        private int MaxQuestion
+        {
+            set
+            {
+                Session["MaxQuestion"] = value.ToString();
+            }
+            get
+            {
+                return Convert.ToInt32(Session["MaxQuestion"]);
+            }
+
+        }
+
+        private string SurveyID
+        {
+            set
+            {
+                Session["SurveyID"] = value.ToString();
+            }
+            get
+            {
+                return Session["SurveyID"].ToString();
+
+            }
+        }
         private string RespondentName
         {
             set
@@ -65,7 +102,7 @@ namespace OnlineSurveyProject
         protected void Page_Load(object sender, EventArgs e)
         {
             var surveyId = Request.QueryString;
-           
+          
             if (!Page.IsPostBack)
             {
                 errorPanel.Visible = false;
@@ -77,12 +114,14 @@ namespace OnlineSurveyProject
                 genderList.DataSource = gender;
                 genderList.DataBind();
                 SurveyState = "surveyPanel";
+                QuestionNumber = 1;
                 if (surveyId != null && surveyId.Count > 0)
                 {
                     string id = surveyId.Get("id");
                     if (id != null)
                     {
                         validateSurvey(id);
+               
                     }
                 }
                 else
@@ -92,16 +131,24 @@ namespace OnlineSurveyProject
             }
             else
             {
-                if (SurveyState == "filloutpanel")
+                if (SurveyState == "filloutPanel")
                 {
                     filloutPanel.Visible = true;
                     surveyPanel.Visible = false;
                     errorPanel.Visible = false;
-                    answerPanel.Visible = false;
+                    
+                    loadQuestion();
                 }
             }
             
         }
+
+        private void loadQuestion()
+        {
+            Control respondBox = Page.LoadControl("~/RespondBox.ascx");
+            respondPanel.Controls.Add(respondBox);
+        }
+
         private void errorSurvey()
         {
             errorPanel.Visible = true;
@@ -124,6 +171,7 @@ namespace OnlineSurveyProject
                     showSurveyIntro(reply);
                 }
                 connection.Close();
+                SurveyID = id;
             }
             catch (Exception x)
             {
@@ -133,6 +181,7 @@ namespace OnlineSurveyProject
         private void showSurveyIntro(SqlDataReader id)
         {
             surveyName.InnerText = id["SurveyName"].ToString();
+            MaxQuestion = Convert.ToInt32(id["NumberOfQuestions"]);
             errorPanel.Visible = false;
             surveyPanel.Visible = true;
             takeSurveyBtn.Enabled = false;
@@ -156,10 +205,20 @@ namespace OnlineSurveyProject
             filloutPanel.Visible = true;
             surveyPanel.Visible = false;
             errorPanel.Visible = false;
-            answerPanel.Visible = false;
+            
             RespondentName = nameTxt.Text.ToString();
             RespondentAge = ageTxt.Text.ToString();
             RespondentGender = genderList.SelectedValue;
+
+            loadQuestion();
+        }
+
+        protected void nextBtn_Click(object sender, EventArgs e)
+        {
+            QuestionNumber++;
+            RespondBox c = respondPanel.Controls.OfType<RespondBox>().ToArray()[0];
+            ((RespondBox)c).submitResponse();
+            ((RespondBox)c).reloadResponse();
         }
     }
 }

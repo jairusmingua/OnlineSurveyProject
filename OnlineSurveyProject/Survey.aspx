@@ -45,13 +45,14 @@
                 </div>
             </asp:PlaceHolder>
             <asp:PlaceHolder ID="filloutPanel" runat="server">
-                <div id="fillout">
-                
-                </div>
-            </asp:PlaceHolder>
-            <asp:PlaceHolder ID="answerPanel" runat="server">
-                <div id="mainPanel">
-                </div>
+                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>
+                        <asp:Panel ID="respondPanel" runat="server">
+
+                        </asp:Panel>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+                <asp:Button ID="nextBtn" runat="server" Text="Next Question"   OnClick="nextBtn_Click" />
             </asp:PlaceHolder>
         </ContentTemplate>
     </asp:UpdatePanel>

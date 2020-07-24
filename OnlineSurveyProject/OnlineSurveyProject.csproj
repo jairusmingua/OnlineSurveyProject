@@ -139,6 +139,7 @@
     <Content Include="Logout.aspx" />
     <Content Include="QuestionBox.ascx" />
     <Content Include="Register.aspx" />
+    <Content Include="RespondBox.ascx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -244,6 +245,12 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RespondBox.ascx.cs">
+      <DependentUpon>RespondBox.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="RespondBox.ascx.designer.cs">
+      <DependentUpon>RespondBox.ascx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
