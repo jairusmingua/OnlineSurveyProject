@@ -21,6 +21,11 @@ namespace OnlineSurveyProject
             {
                 surveyItem.Attributes.Add("sid",value.ToString());
             }
+            get
+            {
+                return surveyItem.Attributes["sid"].ToString();
+
+            }
         }
         public string SurveyName
         {
@@ -48,10 +53,16 @@ namespace OnlineSurveyProject
 
         protected void shareBtn_Click(object sender, EventArgs e)
         {
-            if(Page is Dashboard)
+            if (Page is Dashboard)
             {
-                ((Dashboard)Page).showShareLink(surveyItem.Attributes["sid"],surveyName.InnerText.ToString());
+                ((Dashboard)Page).showShareLink(surveyItem.Attributes["sid"], surveyName.InnerText.ToString());
             }
+        }
+
+        protected void viewBtn_Click(object sender, EventArgs e)
+        {
+            string id = SurveyID;
+            Response.Redirect("View?id=" + id+"&q=1");
         }
     }
 }

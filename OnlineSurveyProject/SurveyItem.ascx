@@ -9,6 +9,7 @@
         </div>
         <div id="surveyButtons">
             <asp:Button ID="shareBtn" runat="server" Text="Share"  OnClick="shareBtn_Click"/>
+            <asp:Button ID="viewBtn" runat="server" Text="View Results" OnClick="viewBtn_Click" />
         </div>
     </div>
 

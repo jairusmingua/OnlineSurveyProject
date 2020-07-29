@@ -10,16 +10,16 @@
 namespace OnlineSurveyProject {
     
     
-    public partial class SurveyItem {
+    public partial class View {
         
         /// <summary>
-        /// surveyItem control.
+        /// viewPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl surveyItem;
+        protected global::System.Web.UI.WebControls.Panel viewPanel;
         
         /// <summary>
         /// surveyName control.
@@ -31,39 +31,39 @@ namespace OnlineSurveyProject {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl surveyName;
         
         /// <summary>
-        /// surveyDate control.
+        /// resultsPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl surveyDate;
+        protected global::System.Web.UI.WebControls.Panel resultsPanel;
         
         /// <summary>
-        /// numberOfQuestions control.
+        /// prevBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl numberOfQuestions;
+        protected global::System.Web.UI.WebControls.Button prevBtn;
         
         /// <summary>
-        /// shareBtn control.
+        /// nextBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button shareBtn;
+        protected global::System.Web.UI.WebControls.Button nextBtn;
         
         /// <summary>
-        /// viewBtn control.
+        /// errorPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button viewBtn;
+        protected global::System.Web.UI.WebControls.PlaceHolder errorPanel;
     }
 }
