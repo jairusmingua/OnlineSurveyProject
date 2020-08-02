@@ -41,7 +41,8 @@ namespace OnlineSurveyProject
                 {
                     reply.Read();
                     string name =reply["FirstName"].ToString() +" "+reply["LastName"].ToString()+"!";
-                    this.Master.setDashboardIdentity(name);
+                    ((Dashboard1)this.Master).setDashboardIdentity(name);
+                    
                 }
                 connection.Close();
                 
