@@ -31,15 +31,6 @@ namespace OnlineSurveyProject {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl surveyName;
         
         /// <summary>
-        /// surveyDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl surveyDate;
-        
-        /// <summary>
         /// numberOfQuestions control.
         /// </summary>
         /// <remarks>
@@ -49,21 +40,30 @@ namespace OnlineSurveyProject {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl numberOfQuestions;
         
         /// <summary>
-        /// shareBtn control.
+        /// surveyDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button shareBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl surveyDate;
         
         /// <summary>
-        /// viewBtn control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button viewBtn;
+        protected global::System.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
+        /// Button2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button2;
     }
 }

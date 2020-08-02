@@ -82,8 +82,7 @@ namespace OnlineSurveyProject
         }
         private void convertSurveyList(SqlDataReader response)
         {
-            StringBuilder surveyHtml = new StringBuilder();
-            surveyHtml.Append("<ul>");
+        
             while (response.Read())
             {
            
@@ -95,8 +94,8 @@ namespace OnlineSurveyProject
 
                 surveyPanel.Controls.Add(c);
             }
-            surveyHtml.Append("</ul>");
-            surveyList.InnerHtml = surveyHtml.ToString();
+          
+           
         }
         protected void logoutBtn_Click(object sender, EventArgs e)
         {
