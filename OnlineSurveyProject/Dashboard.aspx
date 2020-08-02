@@ -1,7 +1,7 @@
 ﻿<%--<%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="OnlineSurveyProject.Dashboard" %>
 
 <%@ MasterType VirtualPath="~/Dashboard.Master" %>--%>
-<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="OnlineSurveyProject.Dashboard" %>
+<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Dashboard.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="OnlineSurveyProject.Dashboard" %>
 <%@ Register Src="~/SurveyItem.ascx" TagName="SurveyItem" TagPrefix="OnlineSurvey" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <%-- <div>
@@ -36,7 +36,7 @@
             </asp:Panel>
         </ContentTemplate>
     </asp:UpdatePanel>--%>
-
+         
         <div class="row mt-3">
             <h1 class="mb-2 col-6 mt-0">Survey</h1>
             <div class="col-6 text-right pt-xs-3">
