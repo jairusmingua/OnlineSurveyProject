@@ -84,28 +84,27 @@ namespace OnlineSurveyProject
                             nextBtn.Enabled = true;
                         }
                         int totalRespondents = 0;
-                        surveyName.InnerText = reply["Question"].ToString();
-                        Label t = new Label();
-                        t.Text = reply["ChoiceText"].ToString();
-                        t.Text += " "+reply["ResponseCount"].ToString();
+                        surveyQuestion.InnerText = reply["Question"].ToString();
+                        Control t = Page.LoadControl("ResultBox.ascx");
+                        ((ResultBox)t).ChoiceText = reply["ChoiceText"].ToString();
+                        ((ResultBox)t).ChoiceResult += " "+reply["ResponseCount"].ToString();
                         totalRespondents += Convert.ToInt32(reply["ResponseCount"].ToString());
                         resultsPanel.Controls.Add(t);
-                        resultsPanel.Controls.Add(new LiteralControl("<br/>"));
                         NumberOfQuestions = reply["NumberOfQuestions"].ToString();
                         CurrentQuestion = reply["QuestionRank"].ToString();
                         while (reply.Read())
                         {
                             if (reply["ChoiceText"].ToString() == "")
                                 break;
-                            t = new Label();
-                            t.Text = reply["ChoiceText"].ToString();
-                            t.Text += " " + reply["ResponseCount"].ToString();
+                            t = Page.LoadControl("ResultBox.ascx");
+                            ((ResultBox)t).ChoiceText = reply["ChoiceText"].ToString();
+                            ((ResultBox)t).ChoiceResult += " " + reply["ResponseCount"].ToString();
                             totalRespondents += Convert.ToInt32(reply["ResponseCount"].ToString());
                             resultsPanel.Controls.Add(t);
-                            resultsPanel.Controls.Add(new LiteralControl("<br/>"));
+                         
                         }
-                        t = new Label();
-                        t.Text = "Total of Respondents: " + totalRespondents;
+            
+                        respondentNumber.InnerText = totalRespondents.ToString();
                         resultsPanel.Controls.Add(t);
                     }
                     connection.Close();

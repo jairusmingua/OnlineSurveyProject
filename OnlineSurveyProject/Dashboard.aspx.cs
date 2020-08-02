@@ -41,7 +41,7 @@ namespace OnlineSurveyProject
                 {
                     reply.Read();
                     string name ="Hello "+ reply["FirstName"].ToString() +" "+reply["LastName"].ToString()+"!";
-                    this.Master.setDashboardIdentity(name);
+                    //this.master.setdashboardidentity(name);
                 }
                 connection.Close();
                 
@@ -82,8 +82,8 @@ namespace OnlineSurveyProject
         }
         private void convertSurveyList(SqlDataReader response)
         {
-            StringBuilder surveyHtml = new StringBuilder();
-            surveyHtml.Append("<ul>");
+            //StringBuilder surveyHtml = new StringBuilder();
+            //surveyHtml.Append("<ul>");
             while (response.Read())
             {
            
@@ -95,8 +95,8 @@ namespace OnlineSurveyProject
 
                 surveyPanel.Controls.Add(c);
             }
-            surveyHtml.Append("</ul>");
-            surveyList.InnerHtml = surveyHtml.ToString();
+            //surveyHtml.Append("</ul>");
+           
         }
         protected void logoutBtn_Click(object sender, EventArgs e)
         {

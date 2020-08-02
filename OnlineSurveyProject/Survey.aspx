@@ -53,7 +53,7 @@
                         </asp:Panel>
                     </ContentTemplate>
                 </asp:UpdatePanel>
-                <asp:Button ID="nextBtn" runat="server" Text="Next Question"   OnClick="nextBtn_Click" />
+                <asp:Button ID="nextBtn" runat="server" Text="Next Question"   OnClick="nextBtn_Click"  />
             </asp:PlaceHolder>
         </ContentTemplate>
     </asp:UpdatePanel>

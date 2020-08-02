@@ -59,7 +59,7 @@ namespace OnlineSurveyProject
         {
             try
             {
-
+                Panel1.Controls.Clear();
                 reloadResponse();
             }
             catch
@@ -81,7 +81,7 @@ namespace OnlineSurveyProject
                 }
                 else
                 {
-                    Response.Redirect("/Dashboard.aspx");
+                    Response.Redirect("/Done.aspx");
                 }
             }
         }
@@ -109,7 +109,7 @@ namespace OnlineSurveyProject
             }
             catch (Exception e)
             {
-                Response.Redirect("/Dashboard.aspx");
+                Response.Redirect("/Default.aspx");
                 throw;
             }
         }
@@ -146,6 +146,7 @@ namespace OnlineSurveyProject
         public void clearResponseBox()
         {
             questionTxt.InnerText = "";
+
             Panel1.Controls.Clear();
         }
         private void formatXML(XmlDocument document)
@@ -169,6 +170,7 @@ namespace OnlineSurveyProject
                     rb.Attributes["ChoiceID"] = x.ChoiceID;
                     rb.Text = x.ChoiceText;
                     rb.AutoPostBack = true;
+                    rb.GroupName = "Choices";
                     Panel1.Controls.Add(rb);
                     Panel1.Controls.Add(new LiteralControl("<br/>"));
 

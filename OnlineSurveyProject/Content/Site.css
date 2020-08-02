@@ -11,12 +11,6 @@ body {
     padding-right: 15px;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
 
 
 /* Responsive: Portrait tablets and up */
@@ -28,5 +22,169 @@ textarea {
     .body-content {
         padding: 0;
     }
+}
+* {
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    color: #048E68;
+    font-weight: 700 !important;
+}
+
+h2 {
+    font-weight: 700 !important;
+}
+
+b {
+    font-weight: 700;
+    color: #048E68;
+}
+
+li {
+    list-style: none;
+}
+
+.surveyBox > ul {
+    margin: 0;
+    padding: 0;
+    width:100% !important;
+}
+
+.surveyItem > .surveyName {
+    color: #048E68;
+    font-weight: 700;
+}
+
+.surveyItem {
+    padding: 1em 0 1em 0;
+    box-shadow: -1px 5px 4px #00000009;
+    overflow-x: hidden;
+    margin: 10px 10px 10px 10px !important;
+    border-radius: 10px;
+}
+
+.surveyBox {
+    height: 70vh;
+    box-shadow: -1px 5px 40px #00000046;
+    border-radius: 15px;
+    overflow-y: scroll;
+}
+
+.viewBox {
+    box-shadow: -1px 5px 40px #00000046;
+    border-radius: 15px;
+}
+
+.ol-buttons {
+    background-color: #048E68;
+    border-radius: 20px;
+    color: white;
+    width: 20vw;
+    padding: 10px;
+    box-shadow: -1px 5px 10px #00000046;
+    border: none;
+    font-size: 0.7em;
+}
+
+.ol-buttons-secondary-black {
+    background-color: #535353;
+    border-radius: 5px;
+    color: white;
+    width: 1em;
+    height: 1em;
+    padding: 10px;
+    border: none;
+    font-size: 0.7em;
+}
+
+.ol-buttons-secondary-red {
+    background-color: #C50B0B;
+    border-radius: 5px;
+    color: white;
+    width: 1em;
+    height: 1em;
+    padding: 10px;
+    border: none;
+    font-size: 0.7em;
+}
+
+.ol-buttons-secondary-green {
+    background-color: #048E68;
+    border-radius: 5px;
+    color: white;
+    width: 1em;
+    height: 1em;
+    padding: 10px;
+    border: none;
+    font-size: 0.7em;
+}
+
+.ol-buttons-add-green-big {
+    background-color: #048E68;
+    border-radius: 50px;
+    color: white;
+    width: 5em;
+    height: 5em;
+    padding: 10px;
+    border: none;
+    font-size: 0.7em;
+}
+
+.ol-buttons-add-green-small {
+    background-color: #048E68;
+    border-radius: 20px;
+    color: white;
+    width: 1em;
+    height: 1em;
+    padding: 10px;
+    border: none;
+    font-size: 0.7em;
+}
+
+.ol-edit {
+    border: none;
+    box-shadow: -1px 5px 20px #00000010;
+    border-radius: 20px;
+    font-size: 1.2em;
+    width: 100%;
+    padding-left: 20px;
+}
+
+
+.questionItem {
+    font-size: 1rem;
+    padding: 1em 0 1em 0;
+    box-shadow: -1px 5px 4px #00000009;
+    overflow-x: hidden;
+    margin: 10px 10px 10px 10px !important;
+    border-radius: 10px;
+}
+
+.questionName {
+    color: #048E68;
+    font-weight: 700;
+}
+
+.choiceName {
+    color: #048E68;
+    font-weight: 700;
+}
+
+.ol-addbutton {
+    width: 100%;
+}
+
+.viewheader {
+    width: 100%;
+}
+
+.viewresult {
+    width: 100%;
+}
+
+.viewfooter {
+    width: 100%;
 }
 
