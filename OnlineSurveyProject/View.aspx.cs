@@ -58,55 +58,80 @@ namespace OnlineSurveyProject
                     String connectionString = ConfigurationManager.ConnectionStrings["OnlineSurvey"]?.ConnectionString;
                     SqlConnection connection = new SqlConnection(connectionString);
                     SqlCommand command = new SqlCommand("ViewQuestionResult", connection);
+                    SqlDataAdapter da = new SqlDataAdapter();
+                    DataSet ds = new DataSet();
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.Add("SurveyID", SqlDbType.UniqueIdentifier).Value = Guid.Parse(surveyId.Get("id").ToString());
                     command.Parameters.Add("QuestionNumber", System.Data.SqlDbType.Int).Value = Convert.ToInt32(surveyId.Get("q"));
-                    connection.Open();
-                    var reply = command.ExecuteReader();
-                    if (reply != null)
+                    //connection.Open();
+                    da = new SqlDataAdapter(command);
+                    da.Fill(ds);
+
+                    if (da != null)
                     {
-                        
-                        reply.Read();
-                        if (reply["QuestionRank"].ToString() == "1")
+
+
+
+
+
+
+
+
+                        int totalrespondents = Convert.ToInt32(ds.Tables[1].Rows[0][0]);
+
+                        foreach(DataRow row in ds.Tables[0].Rows)
                         {
-                            prevBtn.Enabled = false;
-                        }
-                        else
-                        {
-                            prevBtn.Enabled = true;
-                        }
-                        if (reply["QuestionRank"].ToString() == reply["NumberOfQuestions"].ToString())
-                        {
-                            nextBtn.Enabled = false;
-                        }
-                        else
-                        {
-                            nextBtn.Enabled = true;
-                        }
-                        int totalRespondents = 0;
-                        surveyName.InnerText = reply["Question"].ToString();
-                        Label t = new Label();
-                        t.Text = reply["ChoiceText"].ToString();
-                        t.Text += " "+reply["ResponseCount"].ToString();
-                        totalRespondents += Convert.ToInt32(reply["ResponseCount"].ToString());
-                        resultsPanel.Controls.Add(t);
-                        resultsPanel.Controls.Add(new LiteralControl("<br/>"));
-                        NumberOfQuestions = reply["NumberOfQuestions"].ToString();
-                        CurrentQuestion = reply["QuestionRank"].ToString();
-                        while (reply.Read())
-                        {
-                            if (reply["ChoiceText"].ToString() == "")
+                            if (row["ChoiceText"].ToString() == "")
+                            {
                                 break;
-                            t = new Label();
-                            t.Text = reply["ChoiceText"].ToString();
-                            t.Text += " " + reply["ResponseCount"].ToString();
-                            totalRespondents += Convert.ToInt32(reply["ResponseCount"].ToString());
+                            }
+                            surveyName.InnerText = row["SurveyName"].ToString();
+                            NumberOfQuestions = row["NumberOfQuestions"].ToString();
+                            CurrentQuestion = row["QuestionRank"].ToString();
+                            questionText.InnerText = row["Question"].ToString();
+                            if (row["QuestionRank"].ToString() == "1")
+                            {
+                                
+                                prevBtn.Enabled = false;
+                            }
+                            else
+                            {
+                                prevBtn.Enabled = true;
+                            }
+                            if (row["QuestionRank"].ToString() == row["NumberOfQuestions"].ToString())
+                            {
+                                nextBtn.Enabled = false;
+                            }
+                            else
+                            {
+                                nextBtn.Enabled = true;
+                            }
+                            Control t = Page.LoadControl("~/QuestionItem.ascx");
+                            ((QuestionItem)t).ChoiceText = row["ChoiceText"].ToString();
+                            ((QuestionItem)t).setChoiceResult(totalrespondents,Convert.ToInt32(row["ResponseCount"]));
+                            respondentCount.InnerText = totalrespondents.ToString();
                             resultsPanel.Controls.Add(t);
-                            resultsPanel.Controls.Add(new LiteralControl("<br/>"));
                         }
-                        t = new Label();
-                        t.Text = "Total of Respondents: " + totalRespondents;
-                        resultsPanel.Controls.Add(t);
+
+
+
+
+
+
+                        //while (reply.Read())
+                        //{
+                        //    if (reply["ChoiceText"].ToString() == "")
+                        //        break;
+                        //    t = Page.LoadControl("~/QuestionItem.ascx");
+                        //    ((QuestionItem)t).ChoiceText = reply["ChoiceText"].ToString();
+                        //    ((QuestionItem)t).ChoiceResult += " " + reply["ResponseCount"].ToString();
+                        //    totalRespondents += Convert.ToInt32(reply["ResponseCount"].ToString());
+                        //    resultsPanel.Controls.Add(t);
+
+                        //}
+                        //t = new Label();
+                        respondentCount.InnerText = totalrespondents.ToString();
+                        //resultsPanel.Controls.Add(t);
                     }
                     connection.Close();
 

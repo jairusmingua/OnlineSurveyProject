@@ -40,7 +40,7 @@ namespace OnlineSurveyProject
                 if (reply.HasRows)
                 {
                     reply.Read();
-                    string name ="Hello "+ reply["FirstName"].ToString() +" "+reply["LastName"].ToString()+"!";
+                    string name =reply["FirstName"].ToString() +" "+reply["LastName"].ToString()+"!";
                     this.Master.setDashboardIdentity(name);
                 }
                 connection.Close();
@@ -89,7 +89,7 @@ namespace OnlineSurveyProject
                 Control c = Page.LoadControl("~/SurveyItem.ascx");
                 ((SurveyItem)(c)).SurveyName = response["SurveyName"].ToString();
                 ((SurveyItem)(c)).SurveyDate = response["DateCreated"].ToString();
-                ((SurveyItem)(c)).NumberOfQuestions = response["NumberOfQuestions"].ToString();
+                ((SurveyItem)(c)).NumberOfQuestions = response["NumberOfQuestions"].ToString() + " Questions";
                 ((SurveyItem)(c)).SurveyID = response["SurveyId"].ToString();
 
                 surveyPanel.Controls.Add(c);
