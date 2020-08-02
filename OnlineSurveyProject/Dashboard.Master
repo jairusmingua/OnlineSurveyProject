@@ -1,4 +1,4 @@
-﻿z<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.master.cs" Inherits="OnlineSurveyProject.Dashboard1" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.master.cs" Inherits="OnlineSurveyProject.Dashboard1" %>
 
 <!DOCTYPE html>
 
@@ -11,12 +11,9 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">  
-    <%--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">--%>
-    
 </head>
 <body>
     <form runat="server">
@@ -40,43 +37,40 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/">OnlineSurveys.com</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/Dashboard.aspx">Dashboard</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="username" runat="server" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false"></a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-default"
-                                aria-labelledby="navbarDropdownMenuLink-333">
-                                <a class="dropdown-item" href="~/Logout.aspx" runat="server">Logout</a>
-                      
-                            </div>
+                <a class="navbar-brand" href="#">OnlineSurveys</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Dashboard">Dashboard <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
+                    <div class="dropdown" >
+                        <a class="dropdown-toggle" id="username" runat="server" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white;">
+                       
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="/Logout">Logout</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="container body-content">
+        </nav>
+        <div class="container body-content px-5 py-3">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> - OnlineSurveys</p>
+                <%--<a class="nav-link dropdown-toggle" id="username" runat="server" data-toggle="dropdown"/>--%>
             </footer>
         </div>
- 
+
     </form>
 </body>
 </html>

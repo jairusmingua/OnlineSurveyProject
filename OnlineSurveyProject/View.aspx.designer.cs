@@ -31,13 +31,13 @@ namespace OnlineSurveyProject {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl surveyName;
         
         /// <summary>
-        /// surveyQuestion control.
+        /// questionText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl surveyQuestion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl questionText;
         
         /// <summary>
         /// resultsPanel control.
@@ -49,13 +49,13 @@ namespace OnlineSurveyProject {
         protected global::System.Web.UI.WebControls.Panel resultsPanel;
         
         /// <summary>
-        /// respondentNumber control.
+        /// respondentCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl respondentNumber;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl respondentCount;
         
         /// <summary>
         /// prevBtn control.
