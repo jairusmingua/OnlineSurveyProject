@@ -100,10 +100,22 @@ li {
     color: white;
     width: 1em;
     height: 1em;
-    padding: 10px;
+    padding: 7px;
     border: none;
     font-size: 0.7em;
 }
+.ol-buttons-secondary-black > a:hover{
+    color:white;
+
+}
+.ol-buttons-secondary-green > a:hover{
+    color:white;
+
+}
+.ol-buttons-secondary-red > a:hover {
+    color: white;
+}
+
 
 .ol-buttons-secondary-red {
     background-color: #C50B0B;
@@ -111,7 +123,7 @@ li {
     color: white;
     width: 1em;
     height: 1em;
-    padding: 10px;
+    padding: 7px;
     border: none;
     font-size: 0.7em;
 }
@@ -122,7 +134,7 @@ li {
     color: white;
     width: 1em;
     height: 1em;
-    padding: 10px;
+    padding: 7px;
     border: none;
     font-size: 0.7em;
 }

@@ -32,8 +32,10 @@
                             <div class="modal-body">
                                 <p runat="server" id="modalDescription"></p>
                                 <div class="row">
-                                    <div class="col-1"><button></button></div>
-                                    <div class="col-10"><asp:TextBox ID="shareLink" runat="server" CssClass="sharelink"></asp:TextBox></div>
+                                    <div class="col-1">
+                                        <button class="ol-buttons-secondary-black" style="padding:15px !important;" id="copybtn"><i class="fas fa-clipboard"></i></button>
+                                     </div>
+                                    <div class="col-11"><asp:TextBox ID="shareLink" runat="server" CssClass="sharelink"></asp:TextBox></div>
                                 </div>
                                 
                             </div>
@@ -46,4 +48,21 @@
             </asp:Panel>
         </ContentTemplate>
     </asp:UpdatePanel>
+    <script>
+        var copybtn = document.getElementById("copybtn");
+        copybtn.addEventListener('click', () => {
+            var sharelink = document.querySelector(".sharelink");
+            sharelink.focus();
+            sharelink.select();
+            try {
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'successful' : 'unsuccessful';
+               
+            } catch (err) {
+           
+            }
+
+
+        })
+    </script>
 </asp:Content>
