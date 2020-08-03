@@ -50,18 +50,18 @@
     </asp:UpdatePanel>
     <script>
         var copybtn = document.getElementById("copybtn");
-        copybtn.addEventListener('click', () => {
+        copybtn.addEventListener('click', (e) => {
             var sharelink = document.querySelector(".sharelink");
             sharelink.focus();
             sharelink.select();
             try {
                 var successful = document.execCommand('copy');
                 var msg = successful ? 'successful' : 'unsuccessful';
-               
+                
             } catch (err) {
            
             }
-
+            e.preventDefault();
 
         })
     </script>
