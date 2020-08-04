@@ -102,7 +102,21 @@ namespace OnlineSurveyProject
         protected void Page_Load(object sender, EventArgs e)
         {
             var surveyId = Request.QueryString;
-          
+            if (surveyId.Get("success") != null) {
+                if (surveyId.Get("success") == "true")
+                {
+                    errorPanel.Visible = false;
+                    surveyPanel.Visible = false;
+                    successPanel.Visible = true;
+
+                }
+                else
+                {
+                    errorPanel.Visible = true;
+                    surveyPanel.Visible = false;
+                    successPanel.Visible = false;
+                }
+            }
             if (!Page.IsPostBack)
             {
                 errorPanel.Visible = false;
@@ -153,6 +167,7 @@ namespace OnlineSurveyProject
         {
             errorPanel.Visible = true;
             surveyPanel.Visible = false;
+            successPanel.Visible = false;
         }
         private void validateSurvey(string id)
         {
@@ -184,6 +199,7 @@ namespace OnlineSurveyProject
             MaxQuestion = Convert.ToInt32(id["NumberOfQuestions"]);
             errorPanel.Visible = false;
             surveyPanel.Visible = true;
+            successPanel.Visible = false;
             takeSurveyBtn.Enabled = false;
         }
 
@@ -205,7 +221,7 @@ namespace OnlineSurveyProject
             filloutPanel.Visible = true;
             surveyPanel.Visible = false;
             errorPanel.Visible = false;
-            
+            successPanel.Visible = false;
             RespondentName = nameTxt.Text.ToString();
             RespondentAge = ageTxt.Text.ToString();
             RespondentGender = genderList.SelectedValue;

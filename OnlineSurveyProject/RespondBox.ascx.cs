@@ -81,7 +81,7 @@ namespace OnlineSurveyProject
                 }
                 else
                 {
-                    Response.Redirect("/Done.aspx");
+                    Response.Redirect("/Survey?success=true");
                 }
             }
         }

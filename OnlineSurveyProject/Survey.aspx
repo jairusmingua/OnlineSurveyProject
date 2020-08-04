@@ -45,6 +45,14 @@
                     </div>
                 </div>
             </asp:PlaceHolder>
+            <asp:PlaceHolder ID="successPanel" runat="server">
+                <div id="successBoard">
+                    <div class="jumbotron">
+                        <h3 class="display-4">Thank you for taking the survey</h3>
+                        <p class="lead">If you want to create this type of survey, <a href="/Register">Click Here</a> to Create an Account</p>
+                    </div>
+                </div>
+            </asp:PlaceHolder>
             <asp:PlaceHolder ID="filloutPanel" runat="server">
                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                     <ContentTemplate>
