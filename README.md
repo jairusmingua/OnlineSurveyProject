@@ -1,12 +1,12 @@
 # OnlineSurveyProject
 Fullfillment for SADLab Project
 
-#Group Members:
+# Group Members:
 
-Baguisi, Jonathan
-Don, Janno
-Gagante, Miguel
-Mingua, Jairus 
+- Baguisi, Jonathan
+- Don, Janno
+- Gagante, Miguel
+- Mingua, Jairus 
 
 To open the website please visit:
 
