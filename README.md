@@ -3,7 +3,7 @@ An ASP.net website that lets you create online surveys. Create an account and cr
 
 Fullfillment for SADLab and Dotnet3 Project
 
-# Group Members:
+# SADLab Group Members:
 
 - Baguisi, Jonathan
 - Don, Janno
